@@ -19,13 +19,19 @@ class App extends React.Component {
 
     Statistics = ({name}) => {
         return (
-            <span>{name} {this.state[name]}<br/></span>
+            <tr>
+                <td>{name}</td>
+                <td>{this.state[name]}</td>
+            </tr>
         )
     }
 
     Statistic = (props) => {
         return (
-            <span>{props.name} {props.f.toFixed(1)} {props.unit}<br/></span>
+            <tr>
+                <td>{props.name}</td>
+                <td>{props.f.toFixed(1)} {props.unit}</td>
+            </tr>
         )
     }
 
@@ -40,14 +46,16 @@ class App extends React.Component {
                 )
             }
             return (
-                <p>
-                    <this.Statistics name='hyvä' />
-                    <this.Statistics name='neutraali' />
-                    <this.Statistics name='huono' />
-                    <this.Statistic name='keskiarvo' f={(hyvä-huono)/yht}/>
-                    <this.Statistic name='positiivisia' f={(hyvä/yht)*100} unit='%' />
-                </p>
-            )
+                <table>
+                    <tbody>
+                        <this.Statistics name='hyvä' />
+                        <this.Statistics name='neutraali' />
+                        <this.Statistics name='huono' />
+                        <this.Statistic name='keskiarvo' f={(hyvä-huono)/yht}/>
+                        <this.Statistic name='positiivisia' f={(hyvä/yht)*100} unit='%' />
+                    </tbody>
+                </table>
+            )   
         }
 
         return (
